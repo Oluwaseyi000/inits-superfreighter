@@ -90,7 +90,7 @@ class OrderController extends Controller
         //  email notification here
              Mail::to('superfreighters@mailinator.com')->send(new OrderPlacedMailable($order));
 
-        return redirect()->route('order.index')->with('Order Successful, mail sent');
+        return redirect()->route('order.index')->with('message','Order Successful, mail sent');
     }
     /**
      * Store a newly created resource in storage.
