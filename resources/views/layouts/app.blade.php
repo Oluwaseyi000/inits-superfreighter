@@ -43,7 +43,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                          <li class="nav-item">
-                            <a class="nav-link" href="/">Go To Admin Settings</a>
+                            <a class="nav-link" href="{{route('admin.general-settings.index')}}">Go To Admin Settings</a>
                         </li>
                         @guest
                             @if (Route::has('login'))

@@ -47,7 +47,6 @@ class GeneralSettingController extends Controller
             'settings_key' => 'required',
             'settings_value' => 'required'
         ]);
-            // dd(Str::slug($request->settings_key));
         GeneralSettings::create([
             'settings_key' => Str::slug($request->settings_key),
             'settings_value' => $request->settings_value,
@@ -70,9 +69,7 @@ class GeneralSettingController extends Controller
             'country_name' => 'required',
             'settings_value' => 'required'
         ]);
-        // dd(strtolower($request->country_name.'-flat-rate'));
 
-            // dd(Str::slug($request->settings_key));
         GeneralSettings::create([
             'settings_key' => strtolower($request->country_name.'-flat-rate'),
             'settings_value' => $request->settings_value,
@@ -114,7 +111,17 @@ class GeneralSettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+       try {
+
+           $setting = GeneralSettings::where('id', $id)->firstOrFail();
+           $setting->settings_value = $request->settings_value;
+           $setting->description = $request->description;
+           $setting->save();
+           return redirect()->back()->with('message', 'update successful');
+       } catch (\Throwable $th) {
+           return redirect()->back()->with('error', 'something went wrong');
+       }
     }
 
     /**
