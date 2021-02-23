@@ -155,6 +155,7 @@
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Country of Origin*</label>
                     <select name="country_name" id="" class="form-control">
+                        <option disabled selected>Select Country</option>
                         @foreach ($countries as $country)
                         <option value="{{$country->name}}">{{$country->name}}</option>
                         @endforeach

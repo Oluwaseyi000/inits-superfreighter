@@ -20,7 +20,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $countries = Country::get();
+        $countries = Country::where('status',1)->get();
         return view('home', [
             'countries' => $countries
         ]);

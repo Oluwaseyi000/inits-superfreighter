@@ -18,7 +18,7 @@ class GeneralSettingController extends Controller
     public function index()
     {
         $generalSettings = GeneralSettings::orderBy('created_at')->get();
-        $countries = Country::get();
+        $countries = Country::where('status', 0)->get();
         return view('admin.general-settings', [
              'generalSettings' =>  $generalSettings,
              'countries' => $countries
@@ -76,7 +76,11 @@ class GeneralSettingController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect()->back()->with('message', ' Settings Created Successfully');
+        Country::where('name', $request->country_name)->update([
+            'status' => 1
+        ]);
+
+        return redirect()->back()->with('message', ' Settings Created Successfully, Country Activated');
       
     }
 

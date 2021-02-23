@@ -19,9 +19,36 @@ class MyCountryTableSeeder extends Seeder
                 array (
                     'id' => (string) Str::uuid(),
                     'name' => 'AFGHANISTAN',
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
+                    
                 ),
-        ));
+            1 =>
+                array (
+                    'id' => (string) Str::uuid(),
+                    'name' => 'UNITED STATES OF AMERICA',
+                    
+                ),
+            2 =>
+                array (
+                    'id' => (string) Str::uuid(),
+                    'name' => 'SPAIN',
+                ),
+            3 =>
+                array (
+                    'id' => (string) Str::uuid(),
+                    'name' => 'UNITED KINGDOM',
+                   
+                ),
+            4 =>
+                array (
+                    'id' => (string) Str::uuid(),
+                    'name' => 'CANADA',
+                    
+                ),
+            5 =>
+                array (
+                    'id' => (string) Str::uuid(),
+                    'name' => 'GERMANY',
+                ),
+         ));
     }
 }
