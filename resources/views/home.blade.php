@@ -9,6 +9,15 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
+                    <div class="jumbotron">
+                        Guide: 
+                        <ul >
+                            <li>customer input the details of their order and proceed to pay with paystack</li>
+                            <li>Admin setting (Top Right) help admin setup operational costs </li>
+                            <li>Admin can also view all orders </li>
+                            <li>Admin and customer recieve mail after each successful order</li>
+                        </ul>
+                    </div>
                     <form action="{{route('order.previewOrder')}} " method="POST">
                         @csrf
                          <div class="form-group">

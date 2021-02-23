@@ -51,7 +51,7 @@
                         </table>
                        
                         @include('layouts.includes.paystack')
-                        <button type="button" class="btn btn-danger">Back</button>
+                        {{-- <a  href="{{route('order.index git')}}" class="btn btn-danger">Back</button> --}}
                         <button type="submit" class="btn btn-primary">Pay</button>
                     </form>
                     
