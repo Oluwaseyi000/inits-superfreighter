@@ -79,7 +79,7 @@ class OrderController extends Controller
         $price = $data['amount']/100; //convert back to naira
 
         $order = Order::create([
-            'user_ip_address' => $data['ip_address'],
+            'user_ip_address' => $data['customer']['email'],
             'mode_of_transport' => $data['metadata']['mode'],
             'price' => $price,
             'origin_country' => $data['metadata']['origin'],

@@ -32,7 +32,7 @@ class FreightService
 
 
     private function getWeightPricePerKg(){
-         $weight_fare_key = $this->mode == 'air' ? 'air-weight-per-kg': 'sea-weight-per-kg';
+        $weight_fare_key = $this->mode == 'air' ? 'air-weight-per-kg': 'sea-weight-per-kg';
         $fare =  GeneralSettings::where('settings_key',  $weight_fare_key)->first(['settings_value']);
         return  (int) $fare->settings_value;
     }
