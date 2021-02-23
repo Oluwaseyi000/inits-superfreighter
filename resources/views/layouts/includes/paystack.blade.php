@@ -1,4 +1,4 @@
-<input type="hidden" name="email" value="adebajo.oluwaseyi@gmail.com"> {{-- required --}}
+{{-- <input type="hidden" name="email" value="adebajo.oluwaseyi@gmail.com"> required --}}
 {{-- <input type="hidden" name="orderID" value="89898898945"> --}}
 <input type="hidden" name="amount" value="{{$freight->total * 100}}" > {{-- required in kobo --}}
 <input type="hidden" name="quantity" value="1">

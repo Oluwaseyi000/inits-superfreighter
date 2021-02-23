@@ -77,6 +77,7 @@ class OrderController extends Controller
         $paymentDetails = Paystack::getPaymentData();
         $data = $paymentDetails['data'];
         $price = $data['amount']/100; //convert back to naira
+
         $order = Order::create([
             'user_ip_address' => $data['ip_address'],
             'mode_of_transport' => $data['metadata']['mode'],
@@ -88,7 +89,7 @@ class OrderController extends Controller
         ]);
 
         //  email notification here
-             Mail::to('superfreighters@mailinator.com')->send(new OrderPlacedMailable($order));
+             Mail::to($data['customer']['email'])->cc('superfreighters@mailinator.com')->send(new OrderPlacedMailable($order));
 
         return redirect()->route('order.index')->with('message','Order Successful, mail sent');
     }

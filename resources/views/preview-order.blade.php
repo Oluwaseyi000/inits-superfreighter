@@ -11,6 +11,9 @@
                 <div class="card-body">
                     <form action="{{route('paystack.pay')}}" method="POST">
                         @csrf
+                        <div class="mb-4">
+                            <input type="text" class="form-control" name="email" required placeholder="input your email to proceed">
+                        </div>
                        <table class="table table-bordered">
                             <thead>
                                 <tr>
