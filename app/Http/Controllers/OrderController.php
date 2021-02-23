@@ -148,4 +148,11 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function adminList(){
+        $orders = Order::orderBy('created_at')->paginate(10);
+        return view('admin.order-list', [
+            'orders' => $orders
+        ]);
+    }
 }

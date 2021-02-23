@@ -7,7 +7,6 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Preview Order</div>
-{{-- {{dd($freight)}} --}}
                 <div class="card-body">
                     <form action="{{route('paystack.pay')}}" method="POST">
                         @csrf

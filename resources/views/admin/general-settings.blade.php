@@ -6,18 +6,7 @@
     <div class="row">
         
             <div class="col-md-2">
-            <table class="table table-dark">
- 
-  <tbody>
-    <tr>
-      <th scope="row"> <a href="{{route('admin.general-settings.index')}}">Settings</a> </th>
-    </tr>
-    <tr>
-          <th scope="row"> <a href="{{route('admin.general-settings.index')}}">Order List</a> </th>
-    </tr>
-    
-  </tbody>
-</table>
+              @include('layouts.includes.admin-sidebar')
             </div>
             <div class="col-md-10">
                 <div class="row mb-3">
