@@ -18,16 +18,16 @@
                             <li>Admin and customer recieve mail after each successful order</li>
                         </ul>
                     </div>
-                    <form action="{{route('order.previewOrder')}} " method="POST">
+                    <form action="{{route('order.previewOrder')}}" method="POST">
                         @csrf
                          <div class="form-group">
-                            <label for="inputAddress">Input Item weight (in kg)</label>
-                            <input type="number" name="item_weight" class="form-control form-lg" id="inputAddress" placeholder="item weight">
+                            <label for="item_weight">Input Item weight (in kg)</label>
+                            <input type="number" name="item_weight" class="form-control form-lg" id="item_weight" placeholder="item weight">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputState">Select Mode of Transport</label>
-                                <select id="inputState" class="form-control" name="mode">
+                                <label for="inputMode">Select Mode of Transport</label>
+                                <select id="inputMode" class="form-control" name="mode">
                                     <option selected disabled>Select Mode of Transport</option>
                                     <option value="air">By Air</option>
                                     <option value="sea">By Sea</option>
@@ -35,8 +35,8 @@
                                 </div>
                                 
                                 <div class="form-group col-md-6">
-                                <label for="inputState">Select country of origin</label>
-                                <select id="inputState" class="form-control" name="country_of_origin">
+                                <label for="inputOrigin">Select country of origin</label>
+                                <select id="inputOrigin" class="form-control" name="country_of_origin">
                                     <option selected disabled>Select country of origin</option>
                                     @foreach ($countries as $country)
                                         <option value="{{$country->name}}">{{$country->name}}</option> 
@@ -44,8 +44,6 @@
                                 </select>
                                 </div>
                         </div>
-                       
-
                         <button type="submit" class="btn btn-primary">Proceed</button>
                     </form>
                     
