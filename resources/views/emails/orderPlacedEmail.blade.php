@@ -7,21 +7,12 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Preview Order</div>
-{{-- {{dd($freight)}} --}}
                 <div class="card-body">
                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                <th scope="col"> </th>
-                                <th scope="col">Price</th>
-                                {{-- <th scope="col">Last</th>
-                                <th scope="col">Handle</th> --}}
-                                </tr>
-                            </thead>
+                           
                             <tbody>
-                                {{$order->id}}
-                                {{-- {{dd($order)}} --}}
-                                -- <tr>
+                                
+                                <tr>
                                     <th scope="row">Mode of Transport</th>
                                     <td>{{$order->mode_of_transport}}</td>
                                 </tr>
