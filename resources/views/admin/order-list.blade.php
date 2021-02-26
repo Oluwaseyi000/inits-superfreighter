@@ -29,7 +29,8 @@
                     <th scope="row">{{++$key}}</th>
                     <td>{{$order->user_ip_address}}</td>
                     <td>{{$order->mode_of_transport}}</td>
-                    <td>{{$order->price}}</td>
+                    
+                    <td>  N{{number_format($order->price, 2,'.', ',')}}</td>
                     <td>{{$order->origin_country}}</td>
                     <td>{{$order->destination_country}}</td>
                     <td>{{$order->created_at->format('D M d, Y')}}</td>

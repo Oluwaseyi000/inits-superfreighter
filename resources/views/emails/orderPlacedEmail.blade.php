@@ -15,9 +15,10 @@
                                     <th scope="row">Ordered On</th>
                                     <td>{{$order->created_at}}</td>
                                 </tr> 
+                                
                                  <tr>
                                     <th scope="row"> Arrival Time by ({{$order->mode}})
-                                    <td>{{$order->expected_arrival_date}} </td>
+                                        <td>{{$order->expected_arrival_date->format('Y-m-d H:i:s')}} </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Mode of Transport</th>
@@ -29,6 +30,7 @@
                                 </tr>
 
                                 <tr>
+                                   
                                     <th scope="row">Origin Country</th>
                                     <td>{{$order->origin_country}}</td>
                                 </tr>
