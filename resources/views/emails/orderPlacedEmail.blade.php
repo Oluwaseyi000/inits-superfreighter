@@ -12,8 +12,12 @@
                            
                             <tbody>
                                  <tr>
+                                    <th scope="row">Ordered On</th>
+                                    <td>{{$order->created_at}}</td>
+                                </tr> 
+                                 <tr>
                                     <th scope="row"> Arrival Time by ({{$order->mode}})
-                                    <td>{{$order->arrival_time->format('D M d, Y')}} </td>
+                                    <td>{{$order->expected_arrival_date}} </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Mode of Transport</th>
@@ -32,10 +36,7 @@
                                     <th scope="row">Ordered on</th>
                                     <td>{{$order->created_at}}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">Expected Arrival Date</th>
-                                    <td>{{$order->expected_arrival_date}}</td>
-                                </tr> 
+                               
                             </tbody>
                         </table>
                        

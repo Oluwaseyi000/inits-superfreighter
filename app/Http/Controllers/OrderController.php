@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Paystack;
 use App\Models\Order;
 use App\Models\Country;
@@ -71,6 +72,8 @@ class OrderController extends Controller
         $paymentDetails = Paystack::getPaymentData();
         $data = $paymentDetails['data'];
         $price = $data['amount']/100; //convert back to naira
+       
+        $expected_arrival_date= new DateTime($data['metadata']['arrival_time']);
 
         $order = Order::create([
             'user_ip_address' => $data['customer']['email'],
@@ -78,7 +81,7 @@ class OrderController extends Controller
             'price' => $price,
             'origin_country' => $data['metadata']['origin'],
             'destination_country' => 'Nigeria',
-            'expected_arrival_date' => $data['metadata']['arrival_time'],
+            'expected_arrival_date' => $expected_arrival_date,
             
         ]);
 

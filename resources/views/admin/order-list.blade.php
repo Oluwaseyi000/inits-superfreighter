@@ -32,7 +32,7 @@
                     <td>{{$order->origin_country}}</td>
                     <td>{{$order->destination_country}}</td>
                     <td>{{$order->created_at->format('D M d, Y')}}</td>
-                    <td>{{$order->{{$order->expected_arrival_date->format('D M d, Y')}} }}</td>
+                    <td>{{$order->expected_arrival_date}}</td>
                    
                     
                     </tr>
