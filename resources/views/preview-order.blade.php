@@ -11,7 +11,7 @@
                     <form action="{{route('paystack.pay')}}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <input type="text" class="form-control" name="email" required placeholder="input your email to proceed">
+                            <input  class="form-control" name="email" type="email" required placeholder="input your email to proceed">
                         </div>
                        <table class="table table-bordered">
                             <thead>
@@ -27,24 +27,25 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">Base fair by ({{$freight->mode}})</th>
-                                    <td>{{$freight->base_fare}}</td>
+                                    <td>
+                                        N{{number_format($freight->base_fare, 2,'.', ',')}}
                                 </tr>
                                 <tr>
                                     <th scope="row">({{$freight->origin}}) flat rate</th>
-                                    <td>{{$freight->country_flat_rate}}</td>
+                                    <td>N{{number_format($freight->country_flat_rate, 2,'.', ',')}}</td>
                                 </tr>
 
                                 <tr>
                                     <th scope="row">Price based on weight ({{$freight->weight}})kg  * ({{$freight->weight_price_per_kg}})per kg</th>
-                                    <td>{{$freight->total_weight_price}}</td>
+                                    <td> N{{number_format($freight->total_weight_price, 2,'.', ',')}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Custom Tax Percent({{$freight->custom_tax_percent}})% of Total Gross Price ({{$freight->before_tax}})</th>
-                                    <td>{{$freight->tax}}</td>
+                                    <td> N{{number_format($freight->tax, 2,'.', ',')}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Total</th>
-                                    <td>{{$freight->total}}</td>
+                                    <td> N{{number_format($freight->total, 2,'.', ',')}}</td>
                                 </tr>
                                                                
                             </tbody>

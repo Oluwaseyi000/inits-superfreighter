@@ -20,6 +20,7 @@
                     <th scope="col">Origin </th>
                     <th scope="col">Destination</th>
                     <th scope="col">Ordered On</th>
+                    <th scope="col">Arrival Date</th>
                     </tr>
                 </thead>
                 <tbody>
