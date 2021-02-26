@@ -12,7 +12,7 @@
                            
                             <tbody>
                                  <tr>
-                                    <th scope="row"> Arrival Time by ({{$freight->mode}})
+                                    <th scope="row"> Arrival Time by ({{$order->mode}})
                                     <td>{{$order->arrival_time->format('D M d, Y')}} </td>
                                 </tr>
                                 <tr>

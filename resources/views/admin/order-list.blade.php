@@ -14,7 +14,7 @@
                 <thead>
                     <tr>
                     <td>s/n</td>
-                    <th scope="col">Customer ip address</th>
+                    <th scope="col">Customer Email</th>
                     <th scope="col">Mode</th>
                     <th scope="col">Price</th>
                     <th scope="col">Origin </th>
@@ -31,7 +31,8 @@
                     <td>{{$order->price}}</td>
                     <td>{{$order->origin_country}}</td>
                     <td>{{$order->destination_country}}</td>
-                    <td>{{$order->created_at}}</td>
+                    <td>{{$order->created_at->format('D M d, Y')}}</td>
+                    <td>{{$order->{{$order->expected_arrival_date->format('D M d, Y')}} }}</td>
                    
                     
                     </tr>

@@ -64,7 +64,6 @@ class OrderController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('order.index')->with('error', 'something went wrong, probably amount has been compromised');
         }
-        
         return $this->paywithPaystack();
     }
 
@@ -79,7 +78,7 @@ class OrderController extends Controller
             'price' => $price,
             'origin_country' => $data['metadata']['origin'],
             'destination_country' => 'Nigeria',
-            'expected_arrival_date' => now(),
+            'expected_arrival_date' => $data['metadata']['arrival_time'],
             
         ]);
 
@@ -92,7 +91,7 @@ class OrderController extends Controller
    
 
     public function adminList(){
-        $orders = Order::orderBy('created_at')->paginate(10);
+        $orders = Order::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.order-list', [
             'orders' => $orders
         ]);
