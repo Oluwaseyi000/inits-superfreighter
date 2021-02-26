@@ -11,7 +11,10 @@
                        <table class="table table-bordered">
                            
                             <tbody>
-                                
+                                 <tr>
+                                    <th scope="row"> Arrival Time by ({{$freight->mode}})
+                                    <td>{{$order->arrival_time->format('D M d, Y')}} </td>
+                                </tr>
                                 <tr>
                                     <th scope="row">Mode of Transport</th>
                                     <td>{{$order->mode_of_transport}}</td>
@@ -33,9 +36,6 @@
                                     <th scope="row">Expected Arrival Date</th>
                                     <td>{{$order->expected_arrival_date}}</td>
                                 </tr> 
-                                
-                                
-                               
                             </tbody>
                         </table>
                        

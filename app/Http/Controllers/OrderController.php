@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Services\FreightService;
 use App\Mail\OrderPlacedMailable;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
 
 class OrderController extends Controller
 {
@@ -57,7 +58,12 @@ class OrderController extends Controller
         return Paystack::getAuthorizationUrl()->redirectNow();
     }
 
-    public function payStackPay(){
+    public function payStackPay(Request $request){
+        try {
+            $request->amount = Crypt::decryptString($request->encrypted_amount) * 100;
+        } catch (\Throwable $th) {
+            return redirect()->route('order.index')->with('error', 'something went wrong, probably amount has been compromised');
+        }
         
         return $this->paywithPaystack();
     }

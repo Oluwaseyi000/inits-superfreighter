@@ -18,11 +18,13 @@
                                 <tr>
                                 <th scope="col"> </th>
                                 <th scope="col">Price</th>
-                                {{-- <th scope="col">Last</th>
-                                <th scope="col">Handle</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <th scope="row"> Arrival Time by ({{$freight->mode}})
+                                    <td>{{$freight->arrival_time->format('D M d, Y')}} </td>
+                                </tr>
                                 <tr>
                                     <th scope="row">Base fair by ({{$freight->mode}})</th>
                                     <td>{{$freight->base_fare}}</td>
@@ -37,21 +39,19 @@
                                     <td>{{$freight->total_weight_price}}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Custom Tax Percent({{$freight->custom_tax_percent}})% of Total Gross Price {{$freight->before_tax}}</th>
+                                    <th scope="row">Custom Tax Percent({{$freight->custom_tax_percent}})% of Total Gross Price ({{$freight->before_tax}})</th>
                                     <td>{{$freight->tax}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Total</th>
                                     <td>{{$freight->total}}</td>
                                 </tr>
-                                
-                                
-                               
+                                                               
                             </tbody>
                         </table>
                        
                         @include('layouts.includes.paystack')
-                        {{-- <a  href="{{route('order.index git')}}" class="btn btn-danger">Back</button> --}}
+                        <a  href="{{route('order.index')}}" class="btn btn-danger">Back</a>
                         <button type="submit" class="btn btn-primary">Pay</button>
                     </form>
                     
