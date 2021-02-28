@@ -22,7 +22,7 @@
                         @csrf
                          <div class="form-group">
                             <label for="item_weight">Input Item weight (in kg)</label>
-                            <input type="number" name="item_weight" class="form-control form-lg" id="item_weight" placeholder="item weight">
+                            <input type="number" name="item_weight" class="form-control form-lg" step="any" id="item_weight" placeholder="item weight">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">

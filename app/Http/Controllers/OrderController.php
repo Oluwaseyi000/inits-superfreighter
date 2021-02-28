@@ -9,6 +9,7 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Services\FreightService;
 use App\Mail\OrderPlacedMailable;
+use App\Events\NewOrderPlacedEvent;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 
@@ -21,7 +22,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $countries = Country::where('status',1)->get();
+        $countries = Country::where('status',1)->orderBy('name')->get();
         return view('home', [
             'countries' => $countries
         ]);
@@ -81,13 +82,11 @@ class OrderController extends Controller
             'price' => $price,
             'origin_country' => $data['metadata']['origin'],
             'destination_country' => 'Nigeria',
-            'expected_arrival_date' => $expected_arrival_date,
-            
+            'expected_arrival_date' => $expected_arrival_date,   
         ]);
 
-        //  email notification here
-             Mail::to($data['customer']['email'])->cc('superfreighters@mailinator.com')->send(new OrderPlacedMailable($order));
-
+        event(new NewOrderPlacedEvent($order)); 
+        
         return redirect()->route('order.index')->with('message','Order Successful, mail sent');
     }
     

@@ -11,7 +11,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class OrderPlacedMailable extends Mailable
 {
     use Queueable, SerializesModels;
-
+    
+    public $order;
     /**
      * Create a new message instance.
      *
@@ -29,13 +30,7 @@ class OrderPlacedMailable extends Mailable
      */
     public function build()
     {
-        $data = [
-            'order' => $this->order
-        ];
-
         return $this->subject('New Order Notification')
-        ->to('superfreighters@mailinator.com')
-        ->view('emails.orderPlacedEmail', $data);
-        // return $this->view('view.name');
+        ->view('emails.orderPlacedEmail');
     }
 }
