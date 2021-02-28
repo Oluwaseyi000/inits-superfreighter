@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
 
 Route::get('/', [OrderController::class, 'index']);
 Route::resource('order', OrderController::class)->only('index', );
-Route::post('preview-order', [OrderController::class, 'previewOrder'])->name('order.previewOrder');
+Route::post('preview-order', [OrderController::class, 'calculateOrder'])->name('order.previewOrder');
 Route::post('order-pay', [OrderController::class, 'payStackPay'])->name('paystack.pay');
 Route::get('payment/callback', [OrderController::class, 'handleGatewayCallback']);
 Route::get('order-placed', function(){

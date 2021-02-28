@@ -34,9 +34,10 @@ class GeneralSettingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'settings_key' => 'required',
+            'settings_key' => 'required|unique:general_settings',
             'settings_value' => 'required'
         ]);
+
         GeneralSettings::create([
             'settings_key' => Str::slug($request->settings_key),
             'settings_value' => $request->settings_value,

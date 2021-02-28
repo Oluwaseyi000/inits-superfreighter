@@ -12,6 +12,7 @@ use App\Mail\OrderPlacedMailable;
 use App\Events\NewOrderPlacedEvent;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\Order\NewOrderRequest;
 
 class OrderController extends Controller
 {
@@ -29,19 +30,13 @@ class OrderController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * calculate and preview new order
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Facades\View
      */
-    public function previewOrder(Request $request)
+    public function calculateOrder(NewOrderRequest $request)
     {
-        $request->validate([
-            'item_weight' => 'required|min:0.1',
-            'mode' => 'required|in:air,sea',
-            'country_of_origin' => 'required'
-        ]);
-
         $freightService = new FreightService($request->item_weight, $request->mode, $request->country_of_origin);
         $freight = $freightService->calculateFreight();
 
@@ -63,6 +58,8 @@ class OrderController extends Controller
     public function payStackPay(Request $request){
         try {
             $request->amount = Crypt::decryptString($request->encrypted_amount) * 100;
+            $request->currency = 'NGN';
+            $request->quantity = 1;
         } catch (\Throwable $th) {
             return redirect()->route('order.index')->with('error', 'something went wrong, probably amount has been compromised');
         }
@@ -73,7 +70,6 @@ class OrderController extends Controller
         $paymentDetails = Paystack::getPaymentData();
         $data = $paymentDetails['data'];
         $price = $data['amount']/100; //convert back to naira
-       
         $expected_arrival_date= new DateTime($data['metadata']['arrival_time']);
 
         $order = Order::create([
