@@ -29,3 +29,4 @@ Route::get('order-placed', function(){
     return view('emails.orderPlacedEmail');
 });
 
+Route::get('image-mapper',  [OrderController::class, 'mapImage']);

@@ -94,4 +94,9 @@ class OrderController extends Controller
             'orders' => $orders
         ]);
     }
+
+    public function mapImage()
+    {
+       return view('image-mapper');
+    }
 }
